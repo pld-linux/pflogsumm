@@ -1,5 +1,6 @@
 #!/bin/sh
-# Based on Simon J Mudd <sjmudd@pobox.com> pflogsumm.sysconfig
+# Based on:
+# Simon J Mudd <sjmudd@pobox.com> /etc/cron.daily/1pflogsumm
 
 # Source function library.
 . /etc/rc.d/init.d/functions
