@@ -11,7 +11,7 @@ if [ -f /etc/sysconfig/pflogsumm ]; then
 fi
 
 PATH=/bin:/usr/bin
-FLOCK="/tmp/pflogsum.lock"
+FLOCK="/var/lock/pflogsumm.lock"
 
 # Check empty/no exists variables. Quit if some.
 if [ -o "${USE_CRON}" -o -z "${LOGFILE}" -o -z "${EXECUTABLE}" \
