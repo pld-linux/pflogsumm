@@ -13,7 +13,6 @@ Source2:	%{name}.cron
 URL:		http://jimsun.linxnet.com/postfix_contrib.html
 BuildRequires:	rpm-perlprov >= 4.0.2-106
 Requires:	crondaemon
-Requires:	smtpdaemon
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
