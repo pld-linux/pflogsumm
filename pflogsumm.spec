@@ -2,12 +2,12 @@
 Summary:	Postfix Log Entry Summarizer
 Summary(pl):	Analizator logów Postfiksa
 Name:		pflogsumm
-Version:	1.0.12
+Version:	1.0.15
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://jimsun.linxnet.com/pub/postfix_contrib/%{name}-%{version}.tar.gz
-# Source0-md5:	45e2d25a21c5a082769d8903e04d3ea8
+# Source0-md5:	26f9f38fa72b6cd5446eebed47c917af
 Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 URL:		http://jimsun.linxnet.com/postfix_contrib.html
