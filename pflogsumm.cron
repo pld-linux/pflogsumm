@@ -1,0 +1,56 @@
+#!/bin/sh
+# Based on Simon J Mudd <sjmudd@pobox.com> pflogsumm.sysconfig
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Get service config
+if [ -f /etc/sysconfig/pflogsumm ]; then
+        . /etc/sysconfig/pflogsumm
+fi
+
+PATH=/bin:/usr/bin
+FLOCK="/tmp/pflogsum.lock"
+
+# Check empty/no exists variables. Quit if some.
+if [ -o "${USE_CRON}" -o -z "${LOGFILE}" -o -z "${EXECUTABLE}" \
+		-o -z "{$SENDMAIL}" -o -z "${OPTIONS}" \
+		-o -z "${SENDMAIL_OPTIONS}" -o -z "${REPORT_TIME}" ]; then
+	fatal "Empty/no exists variables. Quitting."
+	exit 1
+fi
+
+# Check for lockfile. Quit if exists.
+if [ -f "${FLOCK}" ]; then
+        echo "Lockfile $FLOCK present. Quitting."
+	exit 1
+fi
+touch "$FLOCK"
+
+# Check $USE_CRON variable. Quit if "NO".
+if is_yes "${USE_CRON}"; then
+	# Check mail log file exists/readable or exit.
+	[ ! -f "${LOGFILE}" ] && \
+		{ echo "$0: Can not find log file - exiting"; exit 1; }
+	[ ! -r "${LOGFILE}" ] && \
+	{ echo "$0: Can not find a readable mail log file - exiting"; exit 1; }
+
+	# Ensure the ${EXECUTABLE} and sendmail binaries exist before proceeding.
+	[ -x ${EXECUTABLE} ] || { echo "$0: ${EXECUTABLE} \
+		not executable - exiting";exit 1; }
+	[ -x ${SENDMAIL} ] || { echo "$0: ${SENDMAIL} \
+		not found or not executable - exiting"; exit 1; }
+(
+cat <<EOF
+To: ${POSTMASTER}
+Subject: ${SUBJECT}
+
+Report based on information in ${LOGFILE}
+EOF
+LC_TIME=C ${EXECUTABLE} -d ${REPORT_TIME} ${OPTIONS} ${LOGFILE} 2>/dev/null
+echo -e "\nReport ended with status: $?" ) | ${SENDMAIL} ${SENDMAIL_OPTIONS}
+fi
+
+rm -f $FLOCK
+
+# vi: ts=4 sw=4 tw=78

@@ -1,0 +1,26 @@
+# Do you want to use /etc/cron.daily/00-pflogsumm?
+USE_CRON=yes
+
+# Postmaster address
+POSTMASTER="postmaster@`hostname -f`"
+# POSTMASTER=user@server.org
+
+# Subject report
+SUBJECT="Daily mail report for [`hostname -f`] - `date +\"%A, %d %B %Y\"`"
+
+# Report time
+REPORT_TIME="yesterday"
+# REPORT_TIME="today"
+
+# pflogsumm.pl path
+EXECUTABLE="/usr/sbin/pflogsumm.pl"
+
+# Pflogsumm options
+OPTIONS="--verp_mung=2 --problems_first --iso_date_time -q -u 10 -h 10"
+
+# Maillog patch
+LOGFILE="/var/log/maillog"
+
+# Sendmail path and options
+SENDMAIL="/usr/sbin/sendmail"
+SENDMAIL_OPTIONS="-oi -t"
