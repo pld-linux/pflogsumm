@@ -18,10 +18,10 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The programme serves a detailed log analysis of Postfiksa mail server.
+The programme serves a detailed log analysis of Postfix mail server.
 
 %description -l pl
-Program slu¿±cy do szczegó³owej analizy logów serwera pocztowego
+Program s³u¿±cy do szczegó³owej analizy logów serwera pocztowego
 Postfix.
 
 %prep
