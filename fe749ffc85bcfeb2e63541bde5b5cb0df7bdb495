@@ -1,0 +1,5 @@
+- added automatic daily calling by crondaemon
+  and config file (by A. Nowotny)
+- lines wrapping, small fix in cron script
+- removed redundant Requires
+- Release 2 for config & cron.
