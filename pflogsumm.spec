@@ -1,5 +1,5 @@
 %include	/usr/lib/rpm/macros.perl
-Summary:	Postfix Log Entry Summarizer
+Summary:	Postfix log entry summarizer
 Summary(pl):	Analizator logów Postfiksa
 Name:		pflogsumm
 Version:	1.1.0
