@@ -6,7 +6,7 @@ POSTMASTER="postmaster@`hostname -f`"
 # POSTMASTER=user@server.org
 
 # Subject report
-SUBJECT="Daily mail report for [`hostname -f`] - `date +\"%A, %d %B %Y\"`"
+SUBJECT="Daily mail report for [`hostname -f`] - `LC_TIME=C date +\"%A, %d %B %Y\"`"
 
 # Report time
 REPORT_TIME="yesterday"
