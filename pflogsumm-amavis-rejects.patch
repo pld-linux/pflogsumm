@@ -1,0 +1,22 @@
+--- pflogsumm-1.1.0/pflogsumm.pl.orig	2003-12-12 15:40:19.000000000 +0100
++++ pflogsumm-1.1.0/pflogsumm.pl	2005-09-09 13:43:06.930343120 +0200
+@@ -1510,6 +1510,8 @@
+ 	    $rejReas =~ s/(Client host|Sender address) .+? blocked/blocked/o;
+ 	} elsif($rejTyp eq "MAIL") {	# *more* special treatment :-( grrrr...
+ 	    $rejReas =~ s/^\d{3} (?:<.+>: )?([^;:]+)[;:]?.*$/$1/o;
++	} elsif($rejTyp eq "END-OF-MESSAGE") {
++	    $rejReas =~ s/^(\d{3} [\d\. ]*Message content rejected, .*)[:,].*/$1/o;
+ 	} else {
+ 	    $rejReas =~ s/^(?:.*[:;] )?([^,]+).*$/$1/o;
+ 	}
+@@ -1559,6 +1563,10 @@
+ 	my $rejData = gimme_domain($rejFrom);
+ 	$rejData .= "  ($from)" if($rejAddFrom);
+ 	++$rejects->{$rejTyp}{$rejReas}{$rejData};
++    } elsif($rejReas =~ s/^(\d{3} [\d\. ]*Message content rejected, .*)[:,].*/$1/o) {
++	my $rejData = gimme_domain($rejFrom);
++	$rejData .= "  ($from)" if($rejAddFrom);
++	++$rejects->{$rejTyp}{$rejReas}{$rejData};
+     } else {
+ #	print STDERR "dbg: unknown reject reason $rejReas !\n\n";
+ 	my $rejData = gimme_domain($rejFrom);
