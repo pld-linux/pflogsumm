@@ -3,13 +3,14 @@ Summary:	Postfix log entry summarizer
 Summary(pl):	Analizator logów Postfiksa
 Name:		pflogsumm
 Version:	1.1.0
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/System
 Source0:	http://jimsun.linxnet.com/downloads/%{name}-%{version}.tar.gz
 # Source0-md5:	1f78fcaf2a36ec3520ecff286a45251a
 Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
+Patch0:		%{name}-amavis-rejects.patch
 URL:		http://jimsun.linxnet.com/postfix_contrib.html
 BuildRequires:	rpm-perlprov >= 4.0.2-106
 Requires:	crondaemon
@@ -26,6 +27,7 @@ Postfix.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
