@@ -46,5 +46,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog pflogsumm-faq.txt README rem_smtpd_stats_supp.pl ToDo
 %attr(755,root,root) %{_sbindir}/pflogsumm.pl
 %attr(750,root,root) /etc/cron.daily/00-%{name}
-%attr(640,root,root) %config(noreplace) %verify(not md5 size mtime) /etc/sysconfig/%{name}
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 %{_mandir}/man1/*
