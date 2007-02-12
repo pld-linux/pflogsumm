@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Postfix log entry summarizer
-Summary(pl):	Analizator logów Postfiksa
+Summary(pl.UTF-8):   Analizator logÃ³w Postfiksa
 Name:		pflogsumm
 Version:	1.1.0
 Release:	4
@@ -21,8 +21,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 The programme serves a detailed log analysis of Postfix mail server.
 
-%description -l pl
-Program s³u¿±cy do szczegó³owej analizy logów serwera pocztowego
+%description -l pl.UTF-8
+Program sÅ‚uÅ¼Ä…cy do szczegÃ³Å‚owej analizy logÃ³w serwera pocztowego
 Postfix.
 
 %prep
