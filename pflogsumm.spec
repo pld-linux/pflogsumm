@@ -2,12 +2,12 @@
 Summary:	Postfix log entry summarizer
 Summary(pl.UTF-8):	Analizator logów Postfiksa
 Name:		pflogsumm
-Version:	1.1.0
-Release:	4
+Version:	1.1.1
+Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://jimsun.linxnet.com/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	1f78fcaf2a36ec3520ecff286a45251a
+# Source0-md5:	2f570477b2e205f9dfc1df13f00b5c0d
 Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 Patch0:		%{name}-amavis-rejects.patch
@@ -43,7 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog pflogsumm-faq.txt README rem_smtpd_stats_supp.pl ToDo
+%doc ChangeLog pflogsumm-faq.txt README ToDo
 %attr(755,root,root) %{_sbindir}/pflogsumm.pl
 %attr(750,root,root) /etc/cron.daily/00-%{name}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
